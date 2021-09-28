@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+       <!-- 高阶函数  AOP 面向切面开发-->
+
+
+
+       <script>
+
+            function eat (...food) {
+                console.log(...food);
+            }
+
+            Function.prototype.before = function (beforeFn) {
+                return  (...args) =>{
+                    beforeFn();
+                    // console.log(this);
+                    this(...args);
+                }
+            }
+
+           let eatFn = eat.before(function () {
+                console.log('刷牙');
+            });
+            eatFn('蛋炒饭','炒面');
+
+
+
+        Array.prototype.myEvery = function (fn) {
+            let flag;
+            for (let i = 0; i< this.length; i++) {
+                flag = fn(this[i], i, this);
+                if (!flag){
+                    return flag;
+                }
+                console.log(100);
+            }
+
+            return flag;
+        }
+
+
+        var arr = [10,20,30];
+
+
+       var r =  arr.myEvery(function (item, index, array) {
+            // console.log(item, index, array);
+            return item > 5;
+        });
+
+        console.log(r);
+
+
+
+        // var r = arr.every(function (item, index, array) {
+        //     // console.log(item, index, array);
+
+        //     return item > 20;
+        // });
+
+
+
+
+
+        // console.log(r);
+    
+
+
+
+
+
+
+
+        
+
+
+
+
+
+       </script>
+
+
+
+
+
+</body>
+
+</html>
