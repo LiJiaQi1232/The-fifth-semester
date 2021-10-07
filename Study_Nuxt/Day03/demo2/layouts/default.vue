@@ -3,7 +3,7 @@
   <div>
     <nav>
       <ul>
-        <li><nav-link to="/">Home</nav-link></li>
+        <li><nav-link to="/">Home </nav-link></li>
         <li><nav-link to="/fade">Fade</nav-link></li>
         <li><nav-link to="/bounce">Bounce</nav-link></li>
       </ul>
