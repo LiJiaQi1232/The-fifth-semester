@@ -1,6 +1,7 @@
 const cookieparser = require('cookieparser');
 export const state = () => {
-   auth: ""
+  return {
+    auth: ""
   }
 };
 export const mutations = {
