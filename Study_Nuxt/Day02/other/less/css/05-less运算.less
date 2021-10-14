@@ -1,0 +1,41 @@
+
+// .center {
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     // c3 新特性 存在兼容性问题
+//     // transform: translate(-50%, -50%);
+//     margin-top: -200px;
+//     margin-left: -200px;
+// }
+
+@w:400px;
+@h:600px;
+
+.father {
+    width: @w;
+    height:@h;
+    background-color: pink;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // c3 新特性 存在兼容性问题
+    // transform: translate(-50%, -50%);
+    // calc() css中的内置方法
+    // margin-top: calc(-400px / 2 );
+    // margin-left: calc(-400px / 2 );
+    // margin-top: -(@h * 0.5);
+    // margin-left:-(@w / 2);
+    .son {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        // c3 新特性 存在兼容性问题
+        // transform: translate(-50%, -50%);
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+}

@@ -1,0 +1,26 @@
+
+// 定义变量
+@width:800px;
+@height:600px;
+
+// 一个变量的值赋值给另一个变量
+@w:@width;
+@h:@height;
+
+@color:aqua;
+
+.box1 {
+    // 局部变量
+    @color:red;
+    // 使用变量
+    width: @w;
+    height: @h;
+    background-color: @color;
+    margin-bottom: 20px;
+}
+
+.box2 {
+    width: @width;
+    height: @height;
+    background-color: @color;
+}

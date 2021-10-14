@@ -1,0 +1,85 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+html, body {
+    // 禁止水平方向出现滚动条
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+/* 头部样式 */
+.header {
+    position: relative;
+    height: 4.946667rem;
+    background-color: rgb(250, 250, 250);
+    //  banner图
+    .pic {
+        height: 2.48rem;
+        img {
+            height: 100%;
+        }
+    }
+    // 个人信息
+    .info {
+        position: relative;
+        top: -0.826667rem;
+        .avator {
+           width: 1.6rem;
+           height: 1.6rem;
+           img {
+               width: 100%;
+               height: 100%;
+               border-radius: 50%;
+           }
+        }
+        h4 {
+            margin: .32rem 0;
+        }
+        .level  {
+            span {
+                margin: 0 .133333rem;
+                color: rgb(181, 181, 181);
+            }
+            
+        }
+        font-size: .16rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+.body {
+    .nav {
+        li {
+            float: left;
+            width: 33.33%;
+            height: 2.906667rem;
+            border-right: 1px solid rgb(228, 228, 228);
+            border-bottom: 1px solid rgb(228, 228, 228);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 14px;
+            i {
+                display: block;
+                width: .666667rem;
+                height: .666667rem;
+                background: url(../imgs/icons.png) no-repeat;
+                background-position:0 -0.4rem;
+                background-size: 3.466667rem  3.466667rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+
+// 通用匹配模式
+.triangle (@_, @width, @color) {
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+// 上三角
+.triangle ('up', @width, @color) {
+    border-width: @width;
+    border-color: @color transparent transparent transparent ;
+}
+
+// 右三角
+.triangle ('right',@width, @color) {
+    border-width: @width;
+    border-color:transparent @color transparent transparent ;
+}
+// 下三角
+.triangle ('bottom',@width, @color) {
+    border-width: @width;
+    border-color: transparent transparent @color transparent ;
+}
+// 左三角
+.triangle ('left',@width, @color) {
+    border-width: @width;
+    border-color: transparent transparent transparent @color ;
+}

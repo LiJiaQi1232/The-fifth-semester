@@ -1,0 +1,11 @@
+div {
+  width: 200px;
+  height: 200px;
+  background-color: pink;
+  transition: all 4s;
+}
+div:hover {
+  width: 400px;
+  height: 200px;
+  background-color: hotpink;
+}

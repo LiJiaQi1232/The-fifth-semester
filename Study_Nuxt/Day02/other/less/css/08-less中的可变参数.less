@@ -1,0 +1,38 @@
+
+.animate(@name, @time, @mode, @delay) {
+    transition: @name, @time, @mode, @delay;
+}
+
+
+// .animate(@name, @time, @mode, @delay) {
+//     transition:@arguments;
+// }
+
+
+.animate(...) {
+    transition:@arguments;
+}
+
+
+.animate(@name, @time, ...) {
+    transition:@arguments;
+}
+.animate(@name, @time, ...) {
+    transition:@arguments;
+}
+
+
+div {
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+    // transition: all 3s linear 0s;
+    // .animate(all, 2s, linear, 3s)
+    .animate(all, 4s);
+}
+
+div:hover {
+    width: 400px;
+    height: 200px;
+    background-color: hotpink;
+}

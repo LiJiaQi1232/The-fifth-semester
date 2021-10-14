@@ -1,0 +1,25 @@
+/* 代码复用 */
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.a {
+  width: 400px;
+  height: 400px;
+  background-color: pink;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.a .b {
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

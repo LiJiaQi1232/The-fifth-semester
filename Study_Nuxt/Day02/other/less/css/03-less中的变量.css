@@ -1,0 +1,11 @@
+.box1 {
+  width: 800px;
+  height: 600px;
+  background-color: #ff0000;
+  margin-bottom: 20px;
+}
+.box2 {
+  width: 800px;
+  height: 600px;
+  background-color: #00ffff;
+}

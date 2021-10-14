@@ -1,0 +1,35 @@
+
+// .size (@w, @h) when (@w = 400px) {
+//     width: @w;
+//     height: @h;
+// }
+
+// // 宽度=400 并且高度=400
+// .size (@w, @h) when (@w = 400px) and (@h = 400px) {
+//     width: @w;
+//     height: @h;
+// }
+
+
+// // ，或者  只有有一个为true 结果为true
+// .size (@w, @h) when (@w = 300px) , (@h = 400px) {
+//     width: @w;
+//     height: @h;
+// }
+
+
+.size (@w, @h) when (ispixel(@w)) {
+    width: @w;
+    height: @h;
+}   
+
+
+.size (@w, @h) when (ispercentage(@w)) {
+    width: @w;
+    height: @h;
+}   
+
+div {
+    .size(100%, 400px);
+    background-color: pink;
+}
