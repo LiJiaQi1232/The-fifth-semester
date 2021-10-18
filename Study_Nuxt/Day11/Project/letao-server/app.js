@@ -7,16 +7,19 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 // 用于解析token
 const jwt = require('koa-jwt');
-
+// 导入加密字符串 
+const {
+  jwtSecret
+} = require('./config')
 // 启动dotenv
 require('dotenv').config()
+// 加载路由
 const index = require('./routes/index')
 const users = require('./routes/users')
 const category = require('./routes/category')
 const sms = require('./routes/sms')
-// 导入加密字符串 
-const {jwtSecret} = require('./config')
-// error handler
+
+// error handler  错误处理
 onerror(app)
 
 // 使用koa-jwt中间件 用于拦截客户端在调用服务端接口时 若请求头中没有设置token 直接返回401（无权限方位）
@@ -36,9 +39,10 @@ app.use(function (ctx, next) {
 app.use(jwt({
   secret: jwtSecret
 }).unless({
-  path: [/^\/public/,/^\/users\/register/,/^\/users\/login/]
-}))
-// middlewares
+  path: [/^\/public/, /^\/users\/register/, /^\/users\/login/, /^\/sendsms/]
+}));
+
+// middlewares  中间件
 app.use(bodyparser({
   enableTypes: ['json', 'form', 'text']
 }))
@@ -50,7 +54,7 @@ app.use(views(__dirname + '/views', {
   extension: 'pug'
 }))
 
-// logger
+// logger 记录操作日志
 app.use(async (ctx, next) => {
   const start = new Date()
   await next()
@@ -58,12 +62,14 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 
-// routes
+// routes 注册路由
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 app.use(category.routes(), category.allowedMethods())
 app.use(sms.routes(), sms.allowedMethods())
-// error-handling
+
+
+// error-handling一旦监听到异常，打印看到报错信息
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
