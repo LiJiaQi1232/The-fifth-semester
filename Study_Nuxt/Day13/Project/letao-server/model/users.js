@@ -1,4 +1,6 @@
-const {query} = require('../db/query')
+const {
+  query
+} = require('../db/query')
 
 // 用户注册
 
@@ -16,3 +18,4 @@ module.exports.findUserInfo=async (username,password)=>{
   return await query('select * from user where username = ? and password =?',[username,password])
 }
 
+// 

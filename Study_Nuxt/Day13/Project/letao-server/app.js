@@ -18,8 +18,10 @@ const index = require('./routes/index')
 const users = require('./routes/users')
 const category = require('./routes/category')
 const sms = require('./routes/sms')
-const order = require('./routes/order')
+// const order = require('./routes/order')
 
+// const {getRandomStr}=require('./utils')
+// console.log(getRandomStr(),'getRandomStr');
 // error handler  错误处理
 onerror(app)
 
@@ -40,7 +42,7 @@ app.use(function (ctx, next) {
 app.use(jwt({
   secret: jwtSecret
 }).unless({
-  path: [/^\/public/, /^\/users\/register/, /^\/users\/login/, /^\/sendsms/, /^\/order/]
+  path: [/^\/public/, /^\/users\/register/, /^\/users\/login/, /^\/sendsms/, ]
 }));
 
 // middlewares  中间件
@@ -68,7 +70,7 @@ app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 app.use(category.routes(), category.allowedMethods())
 app.use(sms.routes(), sms.allowedMethods())
-app.use(order.routes(), order.allowedMethods())
+// app.use(order.routes(), order.allowedMethods())
 
 // error-handling一旦监听到异常，打印看到报错信息
 app.on('error', (err, ctx) => {

@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const cryto = require('crypto');
 const {
   key
 } = require('../config/wx')
@@ -96,33 +96,31 @@ module.exports.getTrade_no = () => {
   return this.getRandomStr() + this.getRandomByLength(5);
 }
 
+// // 生成签名
+module.exports.createSign = (args) => {
+  let stringA = Object.keys(args).sort().reduce((prev, next) => {
+    return prev += `${next}=${args[key]}&`
+  }, ''.concat(`&key=${key}`))
+  console.log(stringA, 'stringA');
+
+  return crypto.createHash('MD5').update(stringA).digest('hex').toUpperCase()
+}
+
 // // 请求参数nonce_str： 生成32位以内的随机字符串 切不重复
 module.exports.getRandomStr = () => {
   return 'letao' + this.getRandomByLength(6) + new Date().getTime()
 }
 
-// // 生成签名
-module.exports.createSign = (args) => {
 
-  const stringA = Object.keys(args).sort().reduce((prev, next) => {
-    return prev += `${next}=${args[next]}&`;
-  }, '').concat(`key=${key}`);
-  console.log(stringA, 'stringA');
-  return crypto.createHash('MD5').update(stringA).digest('hex').toUpperCase()
-
-}
-
-
-
-// 微信下单
-module.exports.createOrder = (url, params) => {
+// 微信订单处理 微信下单 订单查询
+module.exports.orderHandle = (url, params) => {
   return new Promise(async (resolve, reject) => {
     const data = await axios({
       url,
       method: 'POST',
       data: params
     })
-    xml.parseString(data.data, function (err, res) {
+    xml.parseString(data.data, function (err, data) {
       const {
         return_code,
         result_code,
@@ -135,4 +133,5 @@ module.exports.createOrder = (url, params) => {
       }
     })
   })
+
 }

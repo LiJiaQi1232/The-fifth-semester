@@ -1,5 +1,7 @@
 const mysql = require('mysql');
-const {config}=require('./config')
+const {
+  config
+} = require('./config')
 const dbConfig = config[process.env.DB_ENV]
 
 // console.log( process.env.DB_HOST);

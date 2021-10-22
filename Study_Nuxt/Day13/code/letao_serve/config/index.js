@@ -3,5 +3,5 @@ module.exports.secret = 'letato_secret';
 
 
 // jwt 机密字符串
-module.exports.jwtSecret = 'letao_secret';
+module.exports.jwtSecret = 'letao';
 

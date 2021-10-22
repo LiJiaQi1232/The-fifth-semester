@@ -39,7 +39,7 @@ module.exports.order = async (ctx) => {
   }
   // 生成前面 需要你发送的参数生成
   const sign = createSign(params);
-
+console.log(sign,'sign');
   let sendData = `
     <xml>
     <appid>${appid}</appid>
@@ -64,7 +64,7 @@ module.exports.order = async (ctx) => {
   if(return_code=='SUCCESS'&& return_msg=='OK'&&result_code=='SUCCESS'){
     data.payUrl=await QRCode.toDataURL(code_url)
   }
-  ctx.body = {
+  ctx.body = { 
     status: 200,
     data
   }
