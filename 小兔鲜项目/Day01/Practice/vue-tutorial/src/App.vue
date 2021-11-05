@@ -23,15 +23,38 @@
   <!-- <p>{{person.brand.title}}||{{person.name}} </p>
   <button @click="changeBrandTitle">title</button>
   <button @click="changeName">name</button> -->
-  <p>{{person.name}}</p>
-  <button @click="onClickHandler">button</button> 
+  <!-- <p>{{person.name}}</p>
+  <button @click="onClickHandler">button</button>  -->
+  <!-- 3.6 监听多值变化 -->
+  <!-- <input type="text" v-model="firstName">
+  <input type="text" v-model="lastName"> -->
+  
+  <!-- 4. toRef
+  <p>{{name}}</p>
+  <p>{{person.brand.name}}</p>
+  <button @click="onClickHandler">button</button> -->
+
+  <!-- 5.toRefs -->
+  <!-- <p>
+{{ name }} {{ age }} {{ brand.title }} {{ brand.year }}
+  </p> -->
+
+  <!-- 6.组件通讯：父子传参 -->
+  <div>
+    I am father component
+  </div>
+<hr/>
+<ChildComp :msg="msg"></ChildComp>
+<button @click="onClickHandler">button</button>
 </div>
   
 </template>
 
 <script>
 // 1.4 引入ref
-import {ref,reactive,computed,watch} from "vue"
+import {ref,reactive,computed,watch,watchEffect,toRef,toRefs} from "vue"
+// 引入子组件
+import ChildComp from "./components/ChildComp.vue"
 export default {
 
   // setup(){
@@ -237,6 +260,105 @@ export default {
 // }
 
 //3.6 监听多值变化
+// setup(){
+//   const firstName=ref("")
+//   const lastName=ref("")
+//   watch([firstName,lastName],current=>{
+//     console.log(current);
+//   })
+//   return{
+//     firstName,
+//     lastName
+//   }
+// }
+
+//3.7 使watch监听数据在初始化时执行一次
+// setup() {
+//   const firstName=ref("hello")
+//   const lastName=ref("world")
+// watch([firstName,lastName],current=>{
+//   console.log(current); //['hello', 'world']
+// },
+// {immediate:true }
+// )
+// return{
+//   firstName,
+//   lastName
+// }
+// }
+
+// watchffect 监听状态  和watch一样 都是用于监听响应式数据的变化
+// 区别： watchEffect 只关心数据的最新值 不关心旧值 默认会在初始化时执行一次
+
+// setup(){
+// const firstName=ref("hello")
+//   const lastName=ref("world")
+//   watchEffect(()=>{
+//     console.log(firstName.value); //hello
+//     console.log(lastName.value);  //world
+//   })
+//   return{
+//     firstName,
+//     lastName
+//   }
+// }
+
+// 4. toRef 用于将响应式数据内部的普通数据转换为响应式数据 
+//注：转换后的数据和原始数据存在引用关系 当原始数据发生变化时，toRef转换后的数据也会跟着变化
+// setup() {
+//   const person=ref({name:'哇哈哈'})
+//   const onClickHandler=()=>{
+//     person.value.name="bobySeven"
+//   };
+//   return{
+//     name:toRef(person.value,'name'),
+//     person,
+//     onClickHandler
+//   }
+// }
+// 4.1 需求：当响应式数据的结构层级较深时 可否在在模板中使用时能够简化结构层级
+// setup() {
+//   const person=ref({ brand: { name: "宝马" } });
+//   const onClickHandler=()=>{
+//     person.value.brand.name="宝马mini🤡"
+//   };
+//   return{
+//     name:toRef(person.value.brand,'name'),
+//     person,
+//     onClickHandler
+//   }
+// }
+
+// 5. toRefs toRef一次只能转换一个数据 通过toRefs可以实现批量数据转换
+// setup() {
+//   const person=reactive({
+//     name:'张三',
+//     age:20,
+//     brand:{title:'宝马',year:1}
+//   })
+//   return{
+//     ...toRefs(person)
+//   }
+// }
+
+// 6.组件通讯
+// 父->子 通过 props 向子组件传递数据
+components:{ChildComp},
+setup() {
+  const msg=ref("a message from father")
+  const onClickHandler=()=>{
+    msg.value="a message from parent😀"
+  }
+  return{
+    msg,
+    onClickHandler
+  }
+}
+
+
+
+
+
 
 
 
