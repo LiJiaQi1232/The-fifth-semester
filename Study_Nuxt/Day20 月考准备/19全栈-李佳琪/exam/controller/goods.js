@@ -17,12 +17,13 @@ module.exports.addGoods = async (ctx) => {
     product_name,
     product_desc,
     product_price,
-    product_img
+    product_img,
+    id
   } = ctx.request.body
   const results = await addGoods(product_name,
     product_desc,
     product_price,
-    product_img)
+    product_img,id)
 
   ctx.body = {
     status: 200,
